@@ -71,7 +71,6 @@ publish/
 **/src/environments/environment*.ts
 
 # Compiled output
-*.js
 *.js.map
 *.tsbuildinfo
 
