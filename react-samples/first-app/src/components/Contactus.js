@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ function ContactUs() {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
 
@@ -39,6 +40,9 @@ function ContactUs() {
       console.log(formData); // log before setting state to avoid stale log
       setErrors({});
       setSubmittedData(formData);
+
+      const response=await axios.post("http://localhost:5000/messages",formData);
+      console.log(response.data);
       setFormData({ name: "", email: "", message: "" });
     }
   };
